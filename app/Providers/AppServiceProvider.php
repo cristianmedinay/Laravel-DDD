@@ -19,6 +19,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+
+        //sobrescribimos la paginacion con la app extension lenght... 
+        $this->app->bind(
+            \Illuminate\Pagination\LengthAwarePaginator::class,
+            \App\Extensions\LengthAwarePaginator::class,
+        );
     }
 }
