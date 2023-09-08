@@ -17,7 +17,7 @@ final class GetPostViewModel extends ViewModel
 {
     const PER_PAGE = 4;
 
-    public function posts(bool $paginated = false): ResourceCollection
+    public function posts(bool $paginated = true): ResourceCollection
     {
         $data = app(Pipeline::class)
             ->send(Post::with(["user", "tags", "category"]))

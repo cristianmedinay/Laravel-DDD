@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Exceptions;
+namespace App\Extensions;
 use Illuminate\Support\Collection;
 
 final class LengthAwarePaginator extends \Illuminate\Pagination\LengthAwarePaginator
