@@ -85,6 +85,8 @@ return [
     */
 
     'batching' => [
+        'driver' => env('QUEUE_FAILED_DRIVER', 'database-uuids'),
+
         'database' => env('DB_CONNECTION', 'mysql'),
         'table' => 'job_batches',
     ],

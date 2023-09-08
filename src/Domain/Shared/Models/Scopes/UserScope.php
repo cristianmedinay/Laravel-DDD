@@ -10,9 +10,9 @@ class UserScope implements Scope {
 
     public function apply(Builder $builder, Model $model){
 
-        //si el usuario esta identificado
+        // si el usuario esta identificado
         // todos los modelos consulta si el usuario esta identificado
-        if($user= request()->user()){
+        if($user = request()->user()){
             $builder->whereBelongsTo($user);
         }
     }

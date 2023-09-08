@@ -1,8 +1,8 @@
 <?php
 
-namespace Domain\Shared\Resources;
+namespace Domain\Blog\Resources;
 
-use Domain\Shared\Models\User;
+use Domain\Blog\Models\Tag;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**

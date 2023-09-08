@@ -22,7 +22,7 @@ class Post extends Model {
 
     //global que propaga a todos los modelos
     protected static function booted(){
-        static::addGlobalScope(UserScope::class);
+        static::addGlobalScope(new UserScope);
     }
 
     protected static function newFactory()
@@ -32,7 +32,7 @@ class Post extends Model {
 
 
     //BELONG ES LA REALCION
-    public function posts(): BelongsTo {
+    public function user(): BelongsTo {
     //return $this->belongsToMany(Post::class,'post_tag','tag_id','post_id');
     return $this->belongsTo(User::class);
     }

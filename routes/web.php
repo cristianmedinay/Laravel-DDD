@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Blog\PostController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,4 +33,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+    Route::get('/posts/export-to-excel', [PostController::class, "exportToExcel"])->name('posts.export-to-excel');
+
+    //mapea el post excepto el show
+    Route::resource('posts',PostController::class)->except(['show']);
+
+
 });
