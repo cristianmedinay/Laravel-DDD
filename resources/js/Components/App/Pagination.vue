@@ -1,4 +1,6 @@
 <script setup>
+import { Link } from '@inertiajs/vue3'
+
 const props = defineProps({
     textModel: {
         type: String,
@@ -13,7 +15,7 @@ const from = props.pagination;
 const to = props.pagination;
 const total = props.pagination;
 const current_page = props.pagination;
-const last_page = props.pagination;
+var last_page = props.pagination;
 const links = props.pagination;
 
 </script>
@@ -23,7 +25,7 @@ const links = props.pagination;
         <div>
             <div>
                 <p>
-                    Mostrando de {{ from }} a {{ to }} de {{ total }} {{ textModel }}
+                   <!--  Mostrando de {{ from }} a {{ to }} de {{ total }} {{ textModel }} -->
                 </p>
             </div>
             <div>
@@ -33,19 +35,19 @@ const links = props.pagination;
                         :key="link.label"
                         href="#"
                     >
-                        <span
+                        <Link
                             v-if="link.label === 'first'"
-                            @click.prevent="$emit('paginate', 1)"
+                            :href="route('paginate', 1)"
                         >
                             <span class="sr-only">Primera</span> &lt; &lt;
-                        </span>
+                        </Link>
 
-                        <span
+                        <Link
                             v-if="link.label === 'prev'"
-                            @click="$emit('paginate', current_page - 1)"
+                            :href="route('paginate', current_page - 1)"
                         >
                             <span class="sr-only">Anterior</span> &lt;
-                        </span>
+                        </Link>
 
                         <a
                             v-if="!isNaN(link.label)"

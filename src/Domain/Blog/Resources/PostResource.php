@@ -23,7 +23,7 @@ class PostResource extends JsonResource{
             'body'=>$this->body,
             'user'=>new UserResource($this->whenLoaded("user")),
             'category'=>new CategoryResource ($this->whenLoaded("category")),
-            'tag'=> TagResource::collection($this->whenLoaded("tads")),
+            'tags'=> TagResource::collection($this->whenLoaded("tags")),
             'created_at'=>$this->created_at->isoFormat("LL"),
             
         ];     

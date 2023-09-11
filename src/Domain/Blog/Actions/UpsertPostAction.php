@@ -17,6 +17,7 @@ final class UpsertPostAction
                 'category_id' => request("category_id"),
                 'title' => request("title"),
                 'body' => request("body"),
+             
             ],
         );
 

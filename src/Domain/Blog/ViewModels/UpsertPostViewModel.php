@@ -18,7 +18,7 @@ class UpsertPostViewModel extends ViewModel
 
     public function post(): ?PostResource
     {
-        if ( ! $this->post) {
+        if ( !$this->post) {
             return null;
         }
 

@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { Inertia } from "@inertiajs/inertia";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link,router  } from "@inertiajs/vue3";
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Pagination from "@/Components/App/Pagination.vue";
 import Post from "@/Components/App/Posts/Post.vue";
@@ -15,6 +15,7 @@ const props = defineProps({
             tags: {},
             filters: {},
             initial_filters: {},
+            targss:{}
         },
     },
 })
@@ -56,6 +57,8 @@ const resetFilters = () => {
     filters.value = props.model.initial_filters;
     filterData();
 }
+
+/* console.log( props.model) */
 </script>
 
 <template>
@@ -65,11 +68,10 @@ const resetFilters = () => {
                 Posts
             </h2>
 
-            <button
-                @click="Inertia.visit(route('posts.create'))"
+            <Link :href="route('posts.create')"
             >
                 Crear nuevo post
-            </button>
+            </Link>
 
             <a
                 @click.prevent="exportToExcel"
@@ -97,7 +99,7 @@ const resetFilters = () => {
                             v-model="filters.categories"
                             @change="filterData"
                         >
-                            <option v-for="category in model.categories.data" :value="category.id">
+                            <option v-for="category in model.categories.data" :value="category.id" v-bind:key="category.id">
                                 {{ category.name }}
                             </option>
                         </select>
@@ -109,7 +111,7 @@ const resetFilters = () => {
                             v-model="filters.tags"
                             @change="filterData"
                         >
-                            <option v-for="tag in model.tags.data" :value="tag.id">
+                            <option v-for="tag in model.tags.data" :value="tag.id" v-bind:key="tag.id">
                                 {{ tag.name }}
                             </option>
                         </select>

@@ -36,7 +36,7 @@ Route::middleware([
     Route::get('/posts/export-to-excel', [PostController::class, "exportToExcel"])->name('posts.export-to-excel');
 
     //mapea el post excepto el show
-    Route::resource('posts',PostController::class)->except(['show']);
+    Route::resource('posts', PostController::class)->except("show");
 
 
 });

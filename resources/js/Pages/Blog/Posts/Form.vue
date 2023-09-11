@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from "vue";
-import { useForm } from "@inertiajs/inertia-vue3";
+import { useForm } from "@inertiajs/vue3";
 import AppLayout from "@/Layouts/AppLayout.vue";
 
 const props = defineProps({
@@ -25,6 +25,8 @@ const form = useForm({
 });
 
 onMounted(() => {
+    /* console.log('hola');
+    console.log(props.model) */
     const post = props.model.post;
     if (post) {
         form.id = post.data.id;
@@ -42,6 +44,13 @@ const submit = () => {
         form.post(window.route('posts.store'));
     }
 }
+/* const submit = () => {
+    if (form.id) {
+        form.patch(window.route('posts.update', {id: form.id}));
+    } else {
+        form.post(window.route('posts.store'));
+    }
+} */
 </script>
 
 <template>
@@ -81,7 +90,7 @@ const submit = () => {
                                 <option value="">Selecciona una categoría</option>
                                 <option
                                     v-for="category in model.categories.data"
-                                    :value="category.id"
+                                    :value="category.id" v-bind:key="category.id"
                                 >
                                     {{ category.name }}
                                 </option>
@@ -98,7 +107,7 @@ const submit = () => {
                                 <option value="">Selecciona etiquetas</option>
                                 <option
                                     v-for="tag in model.tags.data"
-                                    :value="tag.id"
+                                    :value="tag.id"  v-bind:key="tag.id"
                                 >
                                     {{ tag.name }}
                                 </option>

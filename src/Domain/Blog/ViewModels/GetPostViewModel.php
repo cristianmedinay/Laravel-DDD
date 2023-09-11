@@ -15,7 +15,7 @@ use Domain\Shared\ViewModels\ViewModel;
 
 final class GetPostViewModel extends ViewModel
 {
-    const PER_PAGE = 4;
+    const PER_PAGE = 3;
 
     public function posts(bool $paginated = true): ResourceCollection
     {
